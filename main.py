@@ -44,3 +44,76 @@
             if (y - radius <= paddle2_y and paddle2_x <= x <= paddle2_x + paddle_width):
                 direction_y *= -1
                 score_p2 += 1
+                # Check if the sphere goes below player 1's paddle (game over for player 1)
+        if y + radius >= curses.LINES - 1:
+            if num_players == 2:
+                if score_p1 > score_p2:
+                    winner = "Player 1 Wins!"
+                elif score_p2 > score_p1:
+                    winner = "Player 2 Wins!"
+                else:
+                    winner = "It's a Draw!"
+            else:
+                winner = "Game Over!"
+            game_over = True
+
+        # Check if the sphere goes above player 2's paddle (game over for player 2)
+        if num_players == 2 and y - radius <= 0:
+            if score_p1 > score_p2:
+                winner = "Player 1 Wins!"
+            elif score_p2 > score_p1:
+                winner = "Player 2 Wins!"
+            else:
+                winner = "It's a Draw!"
+            game_over = True
+
+        # Paddle movement
+        key = stdscr.getch()
+        if key == curses.KEY_LEFT:
+            move_left_p1 = True
+            move_right_p1 = False
+        elif key == curses.KEY_RIGHT:
+            move_right_p1 = True
+            move_left_p1 = False
+        elif key == -1:
+            move_left_p1 = move_right_p1 = False
+
+        if num_players == 2:
+            if key == ord('a'):
+                move_left_p2 = True
+                move_right_p2 = False
+            elif key == ord('d'):
+                move_right_p2 = True
+                move_left_p2 = False
+            elif key == -1:
+                move_left_p2 = move_right_p2 = False
+
+        # Update paddle positions
+        if move_left_p1 and paddle1_x > 0:
+            paddle1_x -= 4
+        if move_right_p1 and paddle1_x + paddle_width < curses.COLS:
+            paddle1_x += 4
+        if num_players == 2:
+            if move_left_p2 and paddle2_x > 0:
+                paddle2_x -= 4
+            if move_right_p2 and paddle2_x + paddle_width < curses.COLS:
+                paddle2_x += 4
+
+        # Increase speed every 1 second
+        elapsed_time = time.time() - start_time
+        if int(elapsed_time) % speed_increase_interval == 0 and elapsed_time > 0:
+            sleep_time *= 0.85
+
+        # Quit if game is over
+        if game_over:
+            stdscr.addstr(curses.LINES // 2, curses.COLS // 2 - len(winner) // 2, winner, curses.color_pair(2))
+            stdscr.addstr(curses.LINES // 2 + 1, curses.COLS // 2 - 10, "Press 'q' to Quit")
+            stdscr.refresh()
+
+            while True:
+                key = stdscr.getch()
+                if key == ord('q'):
+                    return
+
+        stdscr.refresh()
+        time.sleep(sleep_time)
