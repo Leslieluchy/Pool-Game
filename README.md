@@ -5,10 +5,6 @@ This is a terminal-based paddle game implemented in Python using the `curses` li
 ## Table of Contents
 - [Installation](#installation)
 - [How to Play](#how-to-play)
-- [Features](#features)
-- [Code Structure](#code-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
