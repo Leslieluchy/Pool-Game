@@ -1,61 +1,46 @@
-import curses
-import math
-import time
+# Countdown before starting the game
+    countdown_timer(stdscr)
 
-def draw_sphere(stdscr, x, y, radius):
-    for angle in range(0, 360, 10):
-        radians = math.radians(angle)
-        sphere_x = int(radius * math.cos(radians)) + x
-        sphere_y = int(radius * math.sin(radians) / 2) + y
-        if 0 <= sphere_x < curses.COLS and 0 <= sphere_y < curses.LINES:
-            stdscr.addch(sphere_y, sphere_x, 'o', curses.color_pair(1))
+    # Game loop
+    start_time = time.time()
+    speed_increase_interval = 1  # seconds
+    initial_sleep_time = 0.05
+    sleep_time = initial_sleep_time
 
-def draw_paddle(stdscr, paddle_x, paddle_y, paddle_width, color_pair):
-    for i in range(paddle_width):
-        if 0 <= paddle_x + i < curses.COLS:
-            stdscr.addch(paddle_y, paddle_x + i, '=', curses.color_pair(color_pair))
-
-def countdown_timer(stdscr):
-    for i in range(3, 0, -1):
+    while True:
         stdscr.clear()
-        stdscr.addstr(curses.LINES // 2, curses.COLS // 2 - 2, f"Starting in {i}...", curses.color_pair(2))
-        stdscr.refresh()
-        time.sleep(1)
-        
-def game(stdscr, num_players):
-# Setup
-curses.curs_set(0)
-stdscr.nodelay(1)
-stdscr.timeout(50)
 
-# Colors
-if curses.has_colors():
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)  # Sphere color
-    curses.init_pair(2, curses.COLOR_YELLOW, curses.COLOR_BLACK)  # Player 1 paddle color
-    curses.init_pair(3, curses.COLOR_MAGENTA, curses.COLOR_BLACK)  # Player 2 paddle color
+        # Draw sphere
+        draw_sphere(stdscr, x, y, radius)
 
-# Sphere position and velocity
-x, y = curses.COLS // 2, curses.LINES // 2
-radius = 3
-direction_x, direction_y = 1, 1
+        # Draw paddles
+        draw_paddle(stdscr, paddle1_x, paddle1_y, paddle_width, 2)
+        if num_players == 2:
+            draw_paddle(stdscr, paddle2_x, paddle2_y, paddle_width, 3)
 
-# Paddle properties
-paddle_width = 10
+        # Display scores
+        stdscr.addstr(0, 2, f"Player 1 Score: {score_p1}", curses.color_pair(2))
+        if num_players == 2:
+            stdscr.addstr(0, curses.COLS - 20, f"Player 2 Score: {score_p2}", curses.color_pair(3))
 
-# Player 1 (bottom) paddle position and movement
-paddle1_x = curses.COLS // 2 - paddle_width // 2
-paddle1_y = curses.LINES - 2
-move_left_p1, move_right_p1 = False, False
+        # Move sphere
+        x += direction_x
+        y += direction_y
 
-# Player 2 (top) paddle position and movement
-paddle2_x = curses.COLS // 2 - paddle_width // 2
-paddle2_y = 1
-move_left_p2, move_right_p2 = False, False
+        # Bounce off walls (left and right)
+        if x + radius >= curses.COLS - 1 or x - radius <= 0:
+            direction_x *= -1
 
-# Scores
-score_p1 = 0
-score_p2 = 0
+        # Player 1 paddle bounce
+        if (y + radius >= paddle1_y and paddle1_x <= x <= paddle1_x + paddle_width):
+            direction_y *= -1
+            score_p1 += 1
 
-game_over = False
-winner = None
+        # Player 2 (top) paddle bounce or top wall in 1-player mode
+        if num_players == 1:
+            if y - radius <= 0:
+                direction_y *= -1
+        elif num_players == 2:
+            if (y - radius <= paddle2_y and paddle2_x <= x <= paddle2_x + paddle_width):
+                direction_y *= -1
+                score_p2 += 1
