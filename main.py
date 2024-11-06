@@ -2,7 +2,7 @@ import curses
 import math
 import time
 
-
+# drawing the sphere
 def draw_sphere(stdscr, x, y, radius):
     for angle in range(0, 360, 10):
         radians = math.radians(angle)
