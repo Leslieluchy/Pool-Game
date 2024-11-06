@@ -13,18 +13,19 @@ This is a terminal-based paddle game implemented in Python using the `curses` li
 ## Installation
 
 1. **Clone the Repository:**
-2. **Install Dependencies:**
-   This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses,such as windows-curses.Install Dependencies: This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses, such as windows-curses.
+      
+   `git clone https://github.com/yourusername/paddle-game.git`
+   `cd paddle-game`
+3. **Install Dependencies:**
+   This game requires Python 3 and the `curses` library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses,such as windows-curses.Install Dependencies: This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses, such as windows-curses.
 
-bash
-Copy code
-pip install windows-curses  # For Windows users only
-Run the Game:
+`pip install windows-curses  # For Windows users only`
 
-bash
-Copy code
-python main.py
-How to Play
+4. **Run the Game:**
+
+`python main.py`
+
+5. **How to Play**
 Objective: Keep the sphere in play by moving your paddle to bounce it. In two-player mode, try to score points by making the sphere go past your opponent’s paddle.
 Controls:
 Player 1 (Bottom Paddle):
