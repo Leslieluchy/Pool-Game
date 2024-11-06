@@ -13,7 +13,8 @@ This is a terminal-based paddle game implemented in Python using the `curses` li
    `git clone https://github.com/yourusername/paddle-game.git`
    `cd paddle-game`
 3. **Install Dependencies:**
-   This game requires Python 3 and the `curses` library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses,such as windows-curses.Install Dependencies: This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses, such as windows-curses.
+   This game requires Python 3 and the `curses` library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses,such as windows-curses.Install Dependencies: This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses, such as windows-curses. You can also install uing the `pip install -r requirements.txt`
+
 
 `pip install windows-curses  # For Windows users only`
 
