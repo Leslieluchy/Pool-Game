@@ -8,7 +8,7 @@ This is a terminal-based paddle game implemented in Python using the `curses` li
 
 ## Installation
 
-1. **Clone the Repository:**
+1. **Create a Virtual Environemnt and then Clone the Repository:**
       
    `git clone https://github.com/yourusername/paddle-game.git`
    `cd paddle-game`
