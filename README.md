@@ -26,7 +26,7 @@ This is a terminal-based paddle game implemented in Python using the `curses` li
 `python main.py`
 
 5. **How to Play**
-Objective: Keep the sphere in play by moving your paddle to bounce it. In two-player mode, try to score points by making the sphere go past your opponent’s paddle.
+   Objective: Keep the sphere in play by moving your paddle to bounce it. In two-player mode, try to score points by making the sphere go past your opponent’s paddle.
 Controls:
 Player 1 (Bottom Paddle):
 Left Arrow: Move left
