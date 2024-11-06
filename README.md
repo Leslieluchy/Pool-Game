@@ -1,1 +1,1 @@
-# paddle-game
+# Curses-Based Paddle and Sphere Game
