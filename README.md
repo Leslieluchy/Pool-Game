@@ -10,12 +10,16 @@ A pool game implemented using Python and the Pygame and Pymunk libraries. The ga
    ```
 2. Navigate to the project directory:
    ```sh
-   cd pip install pygame pymunk
+   cd Pool-Game
    ```
 3. Install the required libraries using the following command:
    ```sh
    pip install -r requirements.txt
    ```
+   or
+   ```sh
+    pip install pygame pymunk
+    ```
 
 ## How to Run
 1. Ensure you have Python installed on your system.
