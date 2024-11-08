@@ -3,13 +3,23 @@
 ## Description
 A pool game implemented using Python and the Pygame and Pymunk libraries. The game features a pool table, balls, and a cue stick. The objective is to pot all the balls using the cue ball.
 
+## How to Clone and Install
+1. Clone the repository using the following command:
+   ```sh
+   git clone https://github.com/Leslieluchy/Pool-Game.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd pip install pygame pymunk
+   ```
+3. Install the required libraries using the following command:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
 ## How to Run
 1. Ensure you have Python installed on your system.
-2. Install the required libraries using the following command:
-   ```sh
-   pip install pygame pymunk
-   ```
-3. Run the `pool.py` file using the following command:
+2. Run the `pool.py` file using the following command:
    ```sh
    python pool.py
    ```
