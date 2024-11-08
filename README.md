@@ -1,35 +1,56 @@
-# Curses-Based Paddle and Sphere Game
+# Pool Game
 
-This is a terminal-based paddle game implemented in Python using the `curses` library. The game features a moving sphere, paddle controls, and options for one or two players. Players control paddles at the top and bottom of the screen, aiming to bounce the sphere and prevent it from going past their paddles.
+A classic pool game built with Python, Pygame, and Pymunk for simulating realistic physics. Aim to pot all the balls while managing your lives!
 
 ## Table of Contents
+
 - [Installation](#installation)
-- [How to Play](#how-to-play)
+- [Game Instructions](#game-instructions)
+- [Controls](#controls)
+- [Rules](#rules)
+- [Code Overview](#code-overview)
+- [Requirements](#requirements)
+- [Credits](#credits)
 
 ## Installation
 
-1. **Create a Virtual Environemnt and then Clone the Repository:**
-      
-   `git clone https://github.com/yourusername/paddle-game.git`
-   `cd paddle-game`
-3. **Install Dependencies:**
-   This game requires Python 3 and the `curses` library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses,such as windows-curses.Install Dependencies: This game requires Python 3 and the curses library, which is typically included with Python on Linux and macOS. For Windows, you may need a compatible version of curses, such as windows-curses. You can also install uing the `pip install -r requirements.txt`
+### Prerequisites
+
+Ensure Python is installed on your system. You can download it from [Python's official website](https://www.python.org/downloads/).
+
+### Required Libraries
+
+Install the necessary Python libraries by running:
+
+```bash
+pip install -r requirements.txt
 
 
-`pip install windows-curses  # For Windows users only`
-
-4. **Run the Game:**
-
-`python main.py`
-
-## How to Play
-
-   Objective: Keep the sphere in play by moving your paddle to bounce it. In two-player mode, try to score points by making the sphere go past your opponent’s paddle.
-Controls:
-Player 1 (Bottom Paddle):
-Left Arrow: Move left
-Right Arrow: Move right
-Player 2 (Top Paddle, if in two-player mode):
-'A': Move left
-'D': Move right
-Exit Game: Press 'q' during the game-over screen to quit.
+```
+##Game Instructions
+Position the Cue: Move your mouse to aim the cue at the cue ball.
+Set the Force: Press and hold the left mouse button to power up your shot.
+Take the Shot: Release the mouse button to hit the cue ball.
+Pot the Balls: Aim for the pockets to pot balls and score points.
+Avoid Losing Lives: Potting the cue ball reduces your lives by one.
+Winning and Losing Conditions
+Win: All balls are potted.
+Game Over: Lives drop to zero after potting the cue ball multiple times.
+##Controls
+Aim: Move the mouse to adjust the cue's angle.
+Power Up: Hold down the left mouse button to increase shot power.
+Shoot: Release the left mouse button to take the shot.
+Rules
+Lives: You have three lives. Potting the cue ball reduces your lives by one.
+Win Condition: You win by potting all balls except the cue ball.
+Lose Condition: The game ends if you lose all three lives.
+##Code Overview
+#Libraries Used
+pygame for graphics rendering.
+pymunk for physics simulation.
+math for trigonometric calculations.
+Key Variables
+SCREEN_WIDTH and SCREEN_HEIGHT: Screen dimensions.
+lives: Player's remaining lives.
+dia and pocket_dia: Ball and pocket diameters.
+max_force: Maximum force applied to the cue ball.
