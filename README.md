@@ -1,4 +1,4 @@
-```markdown
+
 # Pool Game
 
 ## Description
